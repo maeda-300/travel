@@ -1,0 +1,24 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: travel_db
+      MYSQL_ROOT_PASSWORD: pass
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    command: --default-authentication-plugin=mysql_native_password
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./src:/code
+      - ./static:/static
+    ports:
+      - "8000:8000"
+    depends_on:
+      -  db
+volumes:
+  mysql-data:
