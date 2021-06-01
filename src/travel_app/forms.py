@@ -27,3 +27,11 @@ class SignupForm(UserCreationForm):
         model = User
         fields = ('email','username',)
         labels = {'email':'メールアドレス', 'username':'ユーザー名',}
+
+class LoginForm(AuthenticationForm):
+
+    def __init__(self, request=None, *args, **kwargs):
+        super().__init__(request=None, *args, **kwargs)
+        self.label_suffix = ""
+        self.fields['username'].label = 'メールアドレス'
+        

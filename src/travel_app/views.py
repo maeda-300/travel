@@ -2,6 +2,7 @@ from django.views.generic import TemplateView
 from .forms import *
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
+from django.contrib.auth.views import LoginView
 
 
 class Top(TemplateView):
@@ -22,3 +23,8 @@ class Signup(TemplateView):
             login(request, user)
             return redirect('top')
         return render(request, 'users/signup.html', {'form': form,})
+
+class Login(LoginView):
+    template_name = 'users/login.html'
+    form_class = LoginForm
+

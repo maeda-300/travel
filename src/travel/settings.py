@@ -129,3 +129,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #カスタムユーザーモデル設定
 AUTH_USER_MODEL = 'travel_app.User'
+
+#ログイン遷移先設定
+LOGIN_REDIRECT_URL = 'top'
