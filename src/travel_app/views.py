@@ -1,9 +1,17 @@
-from django.views.generic import TemplateView
+from django.contrib.auth.mixins import UserPassesTestMixin
+from django.views.generic import TemplateView, DetailView
 from .forms import *
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, LogoutView
 
+#ページのpkとログインされたpkが一致しないと403エラーが発生する。
+class OnlyYouMixin(UserPassesTestMixin):
+    raise_exception = True
+
+    def test_func(self):
+        user = self.request.user
+        return user.pk == self.kwargs['pk'] or user.is_superuser
 
 class Top(TemplateView):
     template_name = 'top.html'
@@ -30,3 +38,7 @@ class Login(LoginView):
 
 class Logout(LogoutView):
     pass
+
+class Mypage(DetailView):
+    template_name = 'users/mypage.html'
+    model = User

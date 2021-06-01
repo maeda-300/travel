@@ -23,7 +23,7 @@
             </div>
             <div class="header-btn">
                 {% if user.is_authenticated %}
-                <a class="other-btn" href="#">ユーザー情報</a>
+                <a class="other-btn" href="{% url 'mypage' user.id %}">マイページ</a>
                 <a class="other-btn" href="#">新規投稿</a>
                 {% endif %}
                 {% if not user.is_authenticated %}

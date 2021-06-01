@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="title"><h1>{{ user.username }}さんのマイページ</h1></div>
+<table class="form-table">
+    <tr>
+        <th>メールアドレス</th>
+        <td>{{ object.email }}</td>
+    </tr>
+    <tr>
+        <th>ユーザー名</th>
+        <td>{{ object.username }}</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <div class="mypage-btn-area">
+                <a class="edit-btn" href="#">ユーザー情報編集</a>
+                <a class="delete-btn" href="#">退会</a>
+            </div>
+        </td>
+    </tr>
+</table>
+{% endblock %}
