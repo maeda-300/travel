@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="title"><h1>退会</h1></div>
+<p class="user-delete-confirmation">退会します。よろしいですか？</p>
+<table class="form-table">
+    <tr>
+        <th>メールアドレス</th>
+        <td>{{ object.email }}</td>
+    </tr>
+    <tr>
+        <th>ユーザー名</th>
+        <td>{{ object.username }}</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <form method="post">
+            {% csrf_token %}
+                <div class="user-delete-btn"><button type="submit">退会する</button></div>
+            </form>
+        </td>
+    </tr>
+</table>
+{% endblock %}
