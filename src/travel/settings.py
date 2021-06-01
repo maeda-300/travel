@@ -132,3 +132,6 @@ AUTH_USER_MODEL = 'travel_app.User'
 
 #ログイン遷移先設定
 LOGIN_REDIRECT_URL = 'top'
+
+#ログアウト遷移先設定
+LOGOUT_REDIRECT_URL = 'top'
