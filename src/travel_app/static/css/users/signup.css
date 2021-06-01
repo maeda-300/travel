@@ -1,0 +1,19 @@
+.title{
+    border-bottom: solid 1px black;
+    display: flex;
+    justify-content: center;
+}
+
+table{
+    margin: 20px auto;
+}
+
+.errorlist li{
+    list-style: none;
+    color: red;
+}
+
+.submit-btn{
+    
+    text-align: center;
+}
