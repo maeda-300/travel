@@ -7,18 +7,29 @@ services:
       MYSQL_ROOT_PASSWORD: pass
     volumes:
       - mysql-data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d
     ports:
       - 3306:3306
     command: --default-authentication-plugin=mysql_native_password
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: uwsgi --socket :8001 --module travel.wsgi
     volumes:
       - ./src:/code
       - ./static:/static
-    ports:
-      - "8000:8000"
+    expose:
+      - "8001"
     depends_on:
       -  db
+  nginx:
+    image: nginx:1.13
+    ports:
+      - "80:8000"
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/uwsgi_params:/etc/nginx/uwsgi_params
+      - ./static:/static
+    depends_on:
+      - web
 volumes:
   mysql-data:

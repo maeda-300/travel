@@ -24,9 +24,9 @@ from .local_settings import secret_key
 SECRET_KEY = secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['3.115.149.50', 'maeda7012.com']
 
 
 # Application definition
@@ -135,3 +135,6 @@ LOGIN_REDIRECT_URL = 'top'
 
 #ログアウト遷移先設定
 LOGOUT_REDIRECT_URL = 'top'
+
+#静的ファイル設定
+STATIC_ROOT = '/static'
