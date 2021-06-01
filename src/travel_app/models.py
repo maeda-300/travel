@@ -37,7 +37,7 @@ class User(AbstractBaseUser):
     )
     is_active = models.BooleanField(default=True) #ユーザーがアクティブ化
     is_admin = models.BooleanField(default=False) #管理者かどうか
-    username = models.CharField(max_length=10, default='未設定') #ユーザー名
+    username = models.CharField(max_length=10, default='未設定', unique=True) #ユーザー名
 
     objects = CustomUserManager()
 
