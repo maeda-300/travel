@@ -8,4 +8,5 @@ urlpatterns = [
     path('logout/', Logout.as_view(), name='logout'),
     path('mypage/<int:pk>', Mypage.as_view(), name='mypage'),
     path('user_update/<int:pk>', UserUpdate.as_view(), name='user_update'),
+    path('user_delete/<int:pk>', UserDelete.as_view(), name='user_delete')
 ]

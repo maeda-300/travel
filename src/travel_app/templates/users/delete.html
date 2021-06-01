@@ -6,7 +6,8 @@
 {% endblock %}
 
 {% block content %}
-<div class="title"><h1>{{ user.username }}さんのマイページ</h1></div>
+<div class="title"><h1>退会</h1></div>
+<p class="user-delete-confirmation">退会します。よろしいですか？</p>
 <table class="form-table">
     <tr>
         <th>メールアドレス</th>
@@ -18,10 +19,10 @@
     </tr>
     <tr>
         <td colspan="2">
-            <div class="mypage-btn-area">
-                <a class="edit-btn" href="{% url 'user_update' user.id %}">ユーザー情報編集</a>
-                <a class="delete-btn" href="{% url 'user_delete' user.id %}">退会</a>
-            </div>
+            <form method="post">
+            {% csrf_token %}
+                <div class="user-delete-btn"><button type="submit">退会する</button></div>
+            </form>
         </td>
     </tr>
 </table>

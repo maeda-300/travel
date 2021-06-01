@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import UserPassesTestMixin
-from django.views.generic import TemplateView, DetailView, UpdateView
+from django.views.generic import TemplateView, DetailView, UpdateView, DeleteView
 from .forms import *
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
@@ -47,5 +47,10 @@ class Mypage(DetailView):
 class UserUpdate(UpdateView):
     template_name = 'users/update.html'
     form_class = UserUpdateForm
+    model = User
+    success_url = reverse_lazy('top')
+
+class UserDelete(DeleteView):
+    template_name = 'users/delete.html'
     model = User
     success_url = reverse_lazy('top')
