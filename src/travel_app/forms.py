@@ -34,4 +34,12 @@ class LoginForm(AuthenticationForm):
         super().__init__(request=None, *args, **kwargs)
         self.label_suffix = ""
         self.fields['username'].label = 'メールアドレス'
+
+class UserUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ('username',)
+        labels = {'username':'ユーザー名',}
+
         

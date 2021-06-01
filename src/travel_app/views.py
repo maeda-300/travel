@@ -1,9 +1,10 @@
 from django.contrib.auth.mixins import UserPassesTestMixin
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, UpdateView
 from .forms import *
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, LogoutView
+from django.urls import reverse_lazy
 
 #ページのpkとログインされたpkが一致しないと403エラーが発生する。
 class OnlyYouMixin(UserPassesTestMixin):
@@ -42,3 +43,9 @@ class Logout(LogoutView):
 class Mypage(DetailView):
     template_name = 'users/mypage.html'
     model = User
+
+class UserUpdate(UpdateView):
+    template_name = 'users/update.html'
+    form_class = UserUpdateForm
+    model = User
+    success_url = reverse_lazy('top')
