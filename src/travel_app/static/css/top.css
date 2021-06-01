@@ -1,0 +1,5 @@
+.title{
+    border-bottom: solid 1px black;
+    display: flex;
+    justify-content: center;
+}
