@@ -1,0 +1,125 @@
+body{
+    margin: 0;
+}
+
+header{
+    background-color: #fff6cc;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.header-inner{
+    width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo{
+    width: 200px;
+}
+
+.other-btn{
+    display: inline-block;
+    padding: 0.3em 1em;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: #67c5ff;
+    border: solid 2px #67c5ff;
+    border-radius: 3px;
+}
+
+.other-btn:hover{
+    color: #fff;
+    background-color: #67c5ff;
+}
+
+.auth-btn{
+    display: inline-block;
+    padding: 0.3em 1em;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: #ff8484;
+    border: solid 2px 	#ff8484;
+    border-radius: 3px;
+}
+
+.auth-btn:hover{
+    color: #fff;
+    background-color: #ff8484;
+}
+
+.content-inner{
+    width: 1024px;
+    margin: 0 auto;
+}
+
+footer{
+    background-color: #fff6cc;
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 1024px){
+    .header-inner{
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .content-inner{
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 730px){
+
+    .username-area{
+        display: none;
+    }
+}
+
+@media (max-width: 599px){
+
+    .header-logo{
+        width: 120px;
+    }
+
+}
+
+@media (max-width: 470px){
+
+    .header-logo{
+        width: 80px;
+    }
+
+    .other-btn{
+        display: inline-block;
+        padding: 0.3em 0.5em;
+        font-size: 0.5em;
+        text-decoration: none;
+        color: #67c5ff;
+        border: solid 2px #67c5ff;
+        border-radius: 3px;
+    }
+    
+    .auth-btn{
+        display: inline-block;
+        padding: 0.3em 0.5em;
+        font-size: 0.5em;
+        text-decoration: none;
+        color: #FF8484;
+        border: solid 2px 	#FF8484;
+        border-radius: 3px;
+    }
+
+
+
+}
