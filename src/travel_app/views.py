@@ -77,6 +77,12 @@ class MemoryDetail(DetailView):
     template_name = 'memories/detail.html'
     model = Memory
 
+    def get_context_data(self, *args, **kwargs):
+        memory = kwargs['object']
+        context = super(MemoryDetail, self).get_context_data(*args, **kwargs)
+        context['object_list'] = Comment.objects.filter(memory=memory).order_by('id')
+        return context
+
 class MemoryUpdate(UpdateView):
     template_name = 'memories/update.html'
     form_class = MemoryCreateForm
