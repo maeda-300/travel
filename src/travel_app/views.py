@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import UserPassesTestMixin
-from django.views.generic import TemplateView, DetailView, UpdateView, DeleteView, CreateView
+from django.views.generic import ListView, TemplateView, DetailView, UpdateView, DeleteView, CreateView
 from .forms import SignupForm, LoginForm, UserUpdateForm, MemoryCreateForm
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
@@ -16,8 +16,15 @@ class OnlyYouMixin(UserPassesTestMixin):
         user = self.request.user
         return user.pk == self.kwargs['pk'] or user.is_superuser
 
-class Top(TemplateView):
+class Top(ListView):
     template_name = 'top.html'
+    model = Memory
+
+    def get_queryset(self):
+        object_list = Memory.objects.select_related().order_by('id')[:5]
+        return object_list
+
+
 
 class Signup(TemplateView):
     def get(self, request):
