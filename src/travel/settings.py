@@ -26,7 +26,7 @@ SECRET_KEY = secret_key
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['3.115.149.50', 'maeda7012.com']
+ALLOWED_HOSTS = ['3.115.149.50', 'maeda7012-2.com']
 
 
 # Application definition
