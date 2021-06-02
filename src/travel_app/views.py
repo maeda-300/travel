@@ -4,7 +4,7 @@ from .forms import SignupForm, LoginForm, UserUpdateForm, MemoryCreateForm
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, LogoutView
-from .models import User, Memory
+from .models import Comment, User, Memory
 from django.urls import reverse_lazy, reverse
 
 
@@ -90,4 +90,14 @@ class MemoryDelete(DeleteView):
     model = Memory
     success_url = reverse_lazy('top')
 
+def comment_create(request, pk):
+    if request.method == 'POST':
+        user = request.user
+        memory = Memory.objects.get(id=pk)
+        comment = request.POST.get('comment')
+        comment_obj = Comment.objects.create(comment=comment, memory=memory, user=user)
+        comment_obj.save()
+        return redirect('memory_detail', pk=pk)
+    else:
+        return redirect('top')
 
