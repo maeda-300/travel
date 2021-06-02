@@ -85,3 +85,9 @@ class MemoryUpdate(UpdateView):
     def get_success_url(self):
         return reverse('memory_detail', kwargs={'pk': self.kwargs['pk']})
 
+class MemoryDelete(DeleteView):
+    template_name = 'memories/delete.html'
+    model = Memory
+    success_url = reverse_lazy('top')
+
+

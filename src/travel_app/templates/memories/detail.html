@@ -15,7 +15,7 @@
     <div class="detail-btn-area">
         {% if user.id == object.user.id %}
         <a class="edit-btn" href="{% url 'memory_update' object.pk %}">編集</a>
-        <a class="delete-btn" href="#">削除</a>
+        <a class="delete-btn" href="{% url 'memory_delete' object.pk %}">削除</a>
         {% endif %}
     </div>
     <div class="comment-area">
