@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'travel_app'
+    'travel_app',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +139,11 @@ LOGOUT_REDIRECT_URL = 'top'
 
 #静的ファイル設定
 STATIC_ROOT = '/static'
+
+#投稿された画像の保存先設定(AWS S3)
+from .local_settings import aws_access_key_id, aws_secret_access_key, aws_storage_bucket_name
+AWS_ACCESS_KEY_ID = aws_access_key_id
+AWS_SECRET_ACCESS_KEY = aws_secret_access_key
+AWS_STORAGE_BUCKET_NAME = aws_storage_bucket_name
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
