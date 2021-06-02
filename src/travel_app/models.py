@@ -70,3 +70,9 @@ class Memory(models.Model):
     content = models.TextField()
     image = models.ImageField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+class Comment(models.Model):
+
+    comment = models.CharField(max_length=20)
+    memory = models.ForeignKey(Memory, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
