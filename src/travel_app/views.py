@@ -4,7 +4,7 @@ from .forms import SignupForm, LoginForm, UserUpdateForm, MemoryCreateForm
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, LogoutView
-from .models import User, Memory
+from .models import Comment, User, Memory
 from django.urls import reverse_lazy, reverse
 
 
@@ -77,6 +77,12 @@ class MemoryDetail(DetailView):
     template_name = 'memories/detail.html'
     model = Memory
 
+    def get_context_data(self, *args, **kwargs):
+        memory = kwargs['object']
+        context = super(MemoryDetail, self).get_context_data(*args, **kwargs)
+        context['object_list'] = Comment.objects.filter(memory=memory).order_by('id')
+        return context
+
 class MemoryUpdate(UpdateView):
     template_name = 'memories/update.html'
     form_class = MemoryCreateForm
@@ -90,4 +96,14 @@ class MemoryDelete(DeleteView):
     model = Memory
     success_url = reverse_lazy('top')
 
+def comment_create(request, pk):
+    if request.method == 'POST':
+        user = request.user
+        memory = Memory.objects.get(id=pk)
+        comment = request.POST.get('comment')
+        comment_obj = Comment.objects.create(comment=comment, memory=memory, user=user)
+        comment_obj.save()
+        return redirect('memory_detail', pk=pk)
+    else:
+        return redirect('top')
 
