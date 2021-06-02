@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, LogoutView
 from .models import User, Memory
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 
 
 #ページのpkとログインされたpkが一致しないと403エラーが発生する。
@@ -76,3 +76,12 @@ class MemoryCreate(CreateView):
 class MemoryDetail(DetailView):
     template_name = 'memories/detail.html'
     model = Memory
+
+class MemoryUpdate(UpdateView):
+    template_name = 'memories/update.html'
+    form_class = MemoryCreateForm
+    model = Memory
+
+    def get_success_url(self):
+        return reverse('memory_detail', kwargs={'pk': self.kwargs['pk']})
+

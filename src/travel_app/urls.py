@@ -11,4 +11,5 @@ urlpatterns = [
     path('user_delete/<int:pk>', views.UserDelete.as_view(), name='user_delete'),
     path('memory_create/', views.MemoryCreate.as_view(), name='memory_create'),
     path('memory_detail/<int:pk>', views.MemoryDetail.as_view(), name='memory_detail'),
+    path('memory_update/<int:pk>', views.MemoryUpdate.as_view(), name='memory_update'),
 ]
