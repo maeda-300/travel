@@ -73,6 +73,6 @@ class Memory(models.Model):
 
 class Comment(models.Model):
 
-    comment = models.CharField(max_length=20)
+    comment = models.CharField(max_length=40)
     memory = models.ForeignKey(Memory, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
