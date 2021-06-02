@@ -10,9 +10,9 @@
 <div class="memories">
 {% for memory in object_list %}
     <div class="memory">
-        <a href="#"><img class="memory-image" src="{{ memory.image.url }}"></a>
+        <a href="{% url 'memory_detail' memory.id %}"><img class="memory-image" src="{{ memory.image.url }}"></a>
         <div class="memory-title">
-            <a href="#">{{ memory.title }}</a>
+            <a href="{% url 'memory_detail' memory.id %}">{{ memory.title }}</a>
         </div>
         <div class="added-by"><p>{{ memory.user.username }}さん</p></div>
     </div>    
