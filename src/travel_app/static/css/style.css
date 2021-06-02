@@ -1,3 +1,7 @@
+a{
+    text-decoration: none;
+}
+
 /* ヘッダー、フッター */
 body{
     margin: 0;
@@ -57,7 +61,7 @@ header{
 .content-inner{
     width: 1024px;
     /* ビューポート高さ100% - header高さ - footer高さ */
-    height: calc(100vh - 80px - 80px);
+    min-height: calc(100vh - 80px - 80px);
     margin: 0 auto;
 }
 
@@ -162,6 +166,65 @@ footer{
     border-radius: 3px;
     background-color: red;
     cursor: pointer;
+}
+
+/* トップ */
+
+.memories{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.memory{
+    width: calc((100% - 50px) / 3);
+}
+
+.memory-image{
+    max-width: 100%;
+}
+
+.memory-title{
+    text-align: center;
+    font-size: 20px;
+}
+
+.added-by{
+    text-align: center;
+}
+
+/* 詳細表示 */
+
+.details{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.detail-image{
+    max-width: 30%;
+}
+
+.comment-area{
+    margin: 30px 0;
+    background-color: #fff6cc;
+    padding: 10px;
+    text-align: left;
+
+}
+
+.comment-title{
+    font-size: 20px;
+}
+
+.comments{
+    text-align: left;
+}
+
+.comment-by{
+    font-size: 15px;
+    opacity: 0.5;
+    margin-left: 10px;
 }
 
 /* レスポンシブ対応用 */

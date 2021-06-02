@@ -135,3 +135,8 @@ LOGIN_REDIRECT_URL = 'top'
 
 #ログアウト遷移先設定
 LOGOUT_REDIRECT_URL = 'top'
+
+#投稿された画像の保存先設定
+MEDIA_URL = 'media/'
+
+MEDIA_ROOT = 'travel_app/media'

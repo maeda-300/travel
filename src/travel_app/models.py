@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 class CustomUserManager(BaseUserManager):
+
     def create_user(self, email, password=None):
 
         if not email:
@@ -30,6 +31,7 @@ class CustomUserManager(BaseUserManager):
 
 #カスタムユーザーモデル
 class User(AbstractBaseUser):
+
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,
@@ -61,3 +63,10 @@ class User(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
+
+class Memory(models.Model):
+    
+    title = models.CharField(max_length=50)
+    content = models.TextField()
+    image = models.ImageField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
