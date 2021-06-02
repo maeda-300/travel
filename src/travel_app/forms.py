@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django import forms
-from .models import User
+from .models import User, Memory
 from django.utils.translation import gettext_lazy as _
 
 class SignupForm(UserCreationForm):
@@ -37,9 +37,25 @@ class LoginForm(AuthenticationForm):
 
 class UserUpdateForm(forms.ModelForm):
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.label_suffix = ""
+
     class Meta:
         model = User
         fields = ('username',)
         labels = {'username':'ユーザー名',}
+
+class MemoryCreateForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.label_suffix = ""
+
+    class Meta:
+        model = Memory
+        fields = ('title', 'content', 'image')
+        labels = {'title':'タイトル', 'content':'本文', 'image':'画像',}
+
 
         

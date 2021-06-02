@@ -1,10 +1,12 @@
 from django.contrib.auth.mixins import UserPassesTestMixin
-from django.views.generic import TemplateView, DetailView, UpdateView, DeleteView
-from .forms import *
+from django.views.generic import TemplateView, DetailView, UpdateView, DeleteView, CreateView
+from .forms import SignupForm, LoginForm, UserUpdateForm, MemoryCreateForm
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, LogoutView
+from .models import User, Memory
 from django.urls import reverse_lazy
+
 
 #ページのpkとログインされたpkが一致しないと403エラーが発生する。
 class OnlyYouMixin(UserPassesTestMixin):
@@ -54,3 +56,12 @@ class UserDelete(DeleteView):
     template_name = 'users/delete.html'
     model = User
     success_url = reverse_lazy('top')
+
+class MemoryCreate(CreateView):
+    template_name = 'memories/create.html'
+    form_class = MemoryCreateForm
+    success_url = reverse_lazy('top')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
