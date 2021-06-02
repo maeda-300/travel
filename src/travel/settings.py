@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'travel_app'
+    'travel_app',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -136,7 +137,10 @@ LOGIN_REDIRECT_URL = 'top'
 #ログアウト遷移先設定
 LOGOUT_REDIRECT_URL = 'top'
 
-#投稿された画像の保存先設定
-MEDIA_URL = 'media/'
+#投稿された画像の保存先設定(AWS S3)
+from .local_settings import aws_access_key_id, aws_secret_access_key, aws_storage_bucket_name
+AWS_ACCESS_KEY_ID = aws_access_key_id
+AWS_SECRET_ACCESS_KEY = aws_secret_access_key
+AWS_STORAGE_BUCKET_NAME = aws_storage_bucket_name
 
-MEDIA_ROOT = 'travel_app/media'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
